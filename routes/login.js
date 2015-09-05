@@ -31,6 +31,21 @@ router.post('/login', function(req, res){
 	var customer_id = 0;
 	var restaurant_id = 0;
 
+	// database.insert({"foo": "bar"}, "foobar", function (err, foo) {   
+	// 	if(!err) {
+	// 		console.log("it worked");
+	// 	} else {
+	// 		console.log("sad panda");
+	// 	}
+	// });
+
+	database.update({title: 'The new one'}, 'foobar', function(err, res) {
+		if (err) return console.log('No update!');
+		console.log('Updated!');
+	});
+
+
+
 	database.view('users', 'all', function(err, body) {
 		if (!err) {
 			for(var i = 0; i< body.rows[0].key.length; i++){
@@ -63,18 +78,3 @@ router.post('/', function(req, res){
 });  
 
 module.exports = router;
-
-
-
-	// database.insert({"foo": "bar"}, "foobar", function (err, foo) {   
-	// 	if(!err) {
-	// 		console.log("it worked");
-	// 	} else {
-	// 		console.log("sad panda");
-	// 	}
-	// });
-
-	// database.update({title: 'The new one'}, 'foobar', function(err, res) {
-	// 	if (err) return console.log('No update!');
-	// 	console.log('Updated!');
-	// });
