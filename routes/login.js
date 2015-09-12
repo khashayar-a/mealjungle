@@ -31,35 +31,25 @@ router.post('/login', function(req, res){
 	var customer_id = 0;
 	var restaurant_id = 0;
 
-	// database.insert({"foo": "bar"}, "foobar", function (err, foo) {   
-	// 	if(!err) {
-	// 		console.log("it worked");
-	// 	} else {
-	// 		console.log("sad panda");
-	// 	}
-	// });
-
-	database.update({title: 'The new one'}, 'foobar', function(err, res) {
-		if (err) return console.log('No update!');
-		console.log('Updated!');
-	});
-
-
-
 	database.view('users', 'all', function(err, body) {
 		if (!err) {
 			for(var i = 0; i< body.rows[0].key.length; i++){
 				var user = body.rows[0].key[i];
-				console.log(user.password);
-				console.log(username === user.username && password === user.password);
 				if(username === user.username && password === user.password){
 					success = true;
 					customer_id = user.customer_id;
 					restaurant_id = user.restaurant_id;
+					restaurant_list = user.restaurant_list;
 				}
 			}
 			if(success){
-				res.send({ success: true , customer_id: customer_id, restaurant_id: restaurant_id} );
+				var string = encodeURIComponent(restaurant_list);
+				console.log("REDIRECTING :");
+				console.log(string);
+				
+				res.redirect('/restaurant_list?restaurants=' + string);
+				// res.send({ success: true , customer_id: customer_id, restaurant_id: restaurant_id} );
+
 			}else{
 				res.send({ success: false , msg: "Wrong username or password"} );
 			}

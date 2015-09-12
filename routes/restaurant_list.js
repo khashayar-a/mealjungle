@@ -14,10 +14,11 @@ database.update = function(obj, key, callback) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	console.log(req.query);
 	res.render('restaurant_list', { title: 'Express' , 
 		restaurant_list: [
-		{name: "bruns", id: "1o1"}, 
-		{name: "nordstan", id: "2o2"}
+			{name: "bruns", id: "1o1"}, 
+			{name: "nordstan", id: "2o2"}
 		] 
 	});
 });
