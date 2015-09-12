@@ -58,7 +58,7 @@ $("#btn-save").click(function() {
 
 function load_from_db(restaurant_id) {
 	var data = {};
-	data.restaurant_id = "1o1";
+	data.restaurant_id = restaurant_id;
 	$.ajax({
 		type: 'POST',
 		url: 'cpanel/load',

@@ -37,7 +37,7 @@ $( "#newRestAdd" ).click(function() {
 });
 
 $(".restChoice").click(function() {
-	console.log($(this).data('id'));
-	localStorage.setItem("restaurant-id", $(this).data('id'));
+	console.log($(this).attr('id'));
+	localStorage.setItem("restaurant-id", $(this).attr('id'));
 	window.location.href = "cpanel";
 });
