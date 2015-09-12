@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Meal Jungle</title>
+
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+
+</head>
+<body>
+  
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <img class="navbar-brand" src="/images/logo.svg">
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+          <ul class="nav navbar-nav">
+            <li ><a href="#">Explore </a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="signin.html" >Sign in </a></li>
+            <li><a>or</a></li>
+            <li><a href="signup.html" >Sign up </a></li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+<div class="content-cpanel">
+    <div class="cpanel-header ">
+        <div class="centerize">
+            Information about your establishment    
+        </div>
+    </div>
+    <div class="navwrap-white">
+       <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+              <a href="#restaurant" role="tab" data-toggle="tab">
+                 Establishment
+             </a>
+         </li>
+         <li><a href="#menu" role="tab" data-toggle="tab">
+            Menu
+        </a>
+    </li>
+    <li>
+        <a href="#advanced" role="tab" data-toggle="tab">
+            Advanced
+        </a>
+    </li>
+</ul>
+</div>
+<div class="mainbox-cpanel" >
+    <!-- Nav tabs -->
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- 
+        *************
+          RESTAURANT
+        *************
+    -->
+    <div class="tab-pane fade active in" id="restaurant">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="forlabel">
+                    Name of establishment*
+                </div>
+                <input id="resName" type="name" class="form-control" id="resName" placeholder="eg. Harry's Bar" >
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Type of establishment*
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-choices" data-toggle="dropdown">
+                        <p>Select one or several options from the dropdown menu<span class="caret"></span></p>
+                    </button>
+                    <ul class="dropdown-menu" id="btn-resTypeChoice" role="resType" aria-labelledby="resType">
+                        <li data-value="restaurant"><a>Restaurant</a></li>
+                        <li data-value="cafe"><a>Cafe</a></li>
+                        <li data-value="pizzeria"><a>Pizzeria</a></li>
+                        <li data-value="bar"><a>Bar</a></li>
+                        <li data-value="fast_food"><a>Fast food</a></li>
+                    </ul>
+                </div>
+
+                <div class=" choices resType">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Address*
+                </div>
+                <input id="resAddress" type="address" class="form-control" placeholder="eg. Storgatan 3, Gothenburg, Sweden">
+                <div id="map-canvas"></div>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Phone number
+                </div>
+                <input type="phone" class="form-control" id="resPhone" placeholder="eg. +46 707 17 93 40">
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Email
+                </div>
+                <input type="email" class="form-control" id="resEmail" placeholder="eg. harry@harrysbar.com">
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Website
+                </div>
+                <input type="website" class="form-control" id="resWebsite" placeholder="eg. www.harrysbar.com">
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Description
+                </div>
+                <textarea id="resDescription" class="form-control " placeholder="eg. The best place in the world!"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Cuisine
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-choices" data-toggle="dropdown">
+                        <p>Select one or several options from the dropdown menu<span class="caret"></span></p>
+                    </button>
+                    <ul class="dropdown-menu" id="btn-resCuisineChoice" role="resCuisine" aria-labelledby="resCuisine">
+                        <li data-value="swedish"><a>Swedish</a></li>
+                        <li data-value="persian"><a>Persian</a></li>
+                        <li data-value="italian"><a>Italian</a></li>
+                        <li data-value="indian"><a>Indian</a></li>
+                        <li data-value="french"><a>French</a></li>
+                        <li data-value="asian"><a>Asian</a></li>
+                    </ul>
+                </div>
+                
+                <div class=" choices resCuisine">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Food
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdown-choices" data-toggle="dropdown">
+                        <p>Select one or several options from the dropdown menu<span class="caret"></span></p>
+                    </button>
+                    <ul class="dropdown-menu" id="btn-resFoodChoice" role="resFood" aria-labelledby="resFood">
+                        <li data-value="meat"><a>Meat</a></li>
+                        <li data-value="salad"><a>Salad</a></li>
+                        <li data-value="vegetarian"><a>Vegetarian</a></li>
+                        <li data-value="vegan"><a>Vegan</a></li>
+                        <li data-value="sea-food"><a>Sea Food</a></li>
+                        <li data-value="dessert"><a>Dessert</a></li>
+                    </ul>
+                </div>
+                
+                <div class=" choices resFood">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Meal time
+                </div>
+                <div id="resMealTime" class="btn-group btn-group-justified " data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input id="DDD" type="checkbox" value="breakfast" /> Breakfast
+                    </label> 
+                    <label class="btn btn-default">
+                        <input type="checkbox" value="lunch" /> Lunch
+                    </label> 
+                    <label class="btn btn-default">
+                        <input type="checkbox" value="brunch" /> Brunch
+                    </label> 
+                    <label class="btn btn-default">
+                        <input type="checkbox" value="dinner" /> Dinner
+                    </label> 
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="forlabel">
+                    Price range
+                </div>
+                <div id="resPrice" class="btn-group btn-group-justified " data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="radio" value="low" /> Low
+                    </label> 
+                    <label class="btn btn-default">
+                        <input type="radio" value="medium" /> Medium
+                    </label> 
+                    <label class="btn btn-default">
+                        <input type="radio" value="high" /> High
+                    </label> 
+                </div>
+            </div>
+            <div class="form-group">
+                <a  id="btn-save" type="button" class="btn btn-info">Save</a>
+            </div>
+        </form>
+    </div>
+    
+      <!-- 
+        *********
+          MENU 
+        ********
+    -->
+    <div class="tab-pane fade" id="menu">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <!--
+                <div class="col-sm-10" style="border: 20px #DADED1 solid;background-color: #DADED1;">
+                    <div class="input-group">
+                        <input type="text" id="foodCategory" class="form-control" placeholder="Category name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" id="btn-menuCat" type="button" style="font-size:20px;">Add category
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="choices menuCategory">
+                    </div>
+                </div>
+            -->
+            <div class="menuItem-menu">
+                <div class="menuadd-inline">
+                    <div class="dropdown menu-choosecat">
+                        <button id="dropdown-choices"  class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <p style="text-align:center;">Food Category<span class="caret"></span></p>
+                        </button>
+                        <ul class="dropdown-menu" id="btn-menuFoodCat" role="menuFood" aria-labelledby="menuFood">
+                        </ul>
+                    </div>
+                    <button class="btn btn-info add-cat" id="btn-menuCat" type="button">New category
+                    </button>
+                </div>
+                <div class="menuadd-inline">
+                    <input type="text" class="form-control menuname" id="menuName" placeholder="Name">
+                    <div class="formenuprice">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="menuPrice" placeholder="Price" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">SEK</span>
+                        </div>
+                    </div>
+                </div>
+                <textarea id="menuDescription"  class="form-control " placeholder="Description"></textarea>
+                <a  id="btn-add-item" type="button" class="btn btn-info">Add <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                
+                <div class="formenubutton">
+                    <a  id="btn-view-menu" type="button" class="btn btn-info">View or edit menu <span class="glyphicon glyphicon-search"></a>
+                </div>
+            </div>
+            <div class="category-menu">
+                <div class="menuCategories">
+                    <div class="forcats">
+                        <div class="menucat-inline">
+                            <input type="text" class="form-control catname" id="catName" placeholder="Category name">
+                            <a  id="btn-addMenuCat" type="button" class="btn btn-info">Add    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        </div>
+                        <div id="category-holder">
+                            <div class="menucat-inline">
+                                <div class="category">
+                                    <div class="category-index">1</div>
+                                    <p class="category-name">Sea food</p>
+                                </div>
+                                <div class="category-control">
+                                    <a type="button" class="btn category-up"><img src="/images/icon_arrow_up.svg"></a>
+                                    <a type="button" class="btn category-down"><img src="/images/icon_arrow_down.svg"></a>
+                                    <a type="button" class="btn category-delete"><img src="/images/icon_delete.svg"></a>
+                                </div>
+                            </div>
+                            <div class="menucat-inline">
+                                <div class="category">
+                                    <div class="category-index">1</div>
+                                    <p class="category-name">Sea food</p>
+                                </div>
+                                <div class="category-control">
+                                    <a type="button" class="btn category-up"><img src="/images/icon_arrow_up.svg"></a>
+                                    <a type="button" class="btn category-down"><img src="/images/icon_arrow_down.svg"></a>
+                                    <a type="button" class="btn category-delete"><img src="/images/icon_delete.svg"></a>
+                                </div>
+                            </div>                      
+                            <div class="menucat-inline">
+                                <div class="category">
+                                    <div class="category-index">1</div>
+                                    <p class="category-name">Sea food</p>
+                                </div>
+                                <div class="category-control">
+                                    <a type="button" class="btn category-up"><img src="/images/icon_arrow_up.svg"></a>
+                                    <a type="button" class="btn category-down"><img src="/images/icon_arrow_down.svg"></a>
+                                    <a type="button" class="btn category-delete"><img src="/images/icon_delete.svg"></a>
+                                </div>
+                            </div>  
+                        </div>              
+                        <div class="category-close">
+                            <a type="button" class="btn"><img src="/images/icon_close_tab.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-menu">
+                <div class=" menuPreview">
+                    <div class="forpreview">
+                        <div class="dropdown menu-choosecat" >
+                            <button id="dropdown-choices-preview"  class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                <p>Food Category<span class="caret"></span></p>
+                            </button>
+                            <ul class="dropdown-menu" id="btn-previewCat" role="menuFood" aria-labelledby="menuFood">
+                            </ul>
+                        </div>                                  
+
+                        <div id="preview-menu-holder">
+                            <div class="menupreview-inline">
+                                <div class="preview-menu-item">
+                                    <div class="preview-menu-shortDescription">
+                                        <div class="preview-menu-index">1</div>
+                                        <p class="preview-menu-name">Burger</p>
+                                        <p class="preview-menu-price" >300 SEK</p>
+                                    </div>
+                                    <div class="preview-menu-description">
+                                        <p> DDDDDDDD </p>
+                                    </div>
+                                </div>
+                                <div class="preview-menu-control">
+                                    <a type="button" class="btn preview-menu-up"><img src="/images/icon_arrow_up.svg"></a>
+                                    <a type="button" class="btn preview-menu-down"><img src="/images/icon_arrow_down.svg"></a>
+                                    <a type="button" class="btn preview-menu-delete"><img src="/images/icon_delete.svg"></a>
+                                </div>
+                            </div>
+                            <div class="menupreview-inline">
+                                <div class="preview-menu-item">
+                                    <div class="preview-menu-shortDescription">
+                                        <div class="preview-menu-index">2</div>
+                                        <p class="preview-menu-name">Candy</p>
+                                        <p class="preview-menu-price" >30 SEK</p>
+                                    </div>
+                                    <div class="preview-menu-description">
+                                        <p> DDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasD </p>
+                                        <p> DDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasDDDDDDDDasdasdasdasD </p>
+                                    </div>
+                                </div>
+                                <div class="preview-menu-control">
+                                    <a type="button" class="btn preview-menu-up"><img src="/images/icon_arrow_up.svg"></a>
+                                    <a type="button" class="btn preview-menu-down"><img src="/images/icon_arrow_down.svg"></a>
+                                    <a type="button" class="btn preview-menu-delete"><img src="/images/icon_delete.svg"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-close">
+                            <a type="button" class="btn"><img src="/images/icon_close_tab.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</form>
+</div>
+</div>
+
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/javascripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/cpanel.js"></script>
+<script src="/javascripts/map.js"></script>
+<script src="/javascripts/menu.js"></script>
+<script src="/javascripts/data_transaction.js"></script>
+
+
+</body>
+</html>

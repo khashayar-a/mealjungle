@@ -130,8 +130,12 @@
 				console.log(data);
 				if(data.success){
 					console.log("logging in");
+					localStorage.setItem("customer-id", data.customer_id);
+					localStorage.setItem("restaurant-id", data.restaurant_id);
+					window.location.href = "cpanel";
 				}else{
 					console.log("wrong");
+					passwordObj.parent().append('<p class="input-error password-message">Username or password is not correct</p>');
 				}
 			},
 			complete: function() {
