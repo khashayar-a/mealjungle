@@ -44,31 +44,31 @@
             </div>
         </div>
         <div class="mainbox">
-            <div id="newRestButton"> Create new</div>
-            <div class="input-group newRestInput">
-                <input type="text" class="form-control" placeholder="New name">
-              <span class="input-group-btn">
-                <button class="btn btn-default" id="newRestAdd" type="button">Add</button>
-              </span>
-            </div>
+                <div id="newRestButton"> Create new</div>
+                <div class="input-group newRestInput">
+                    <input type="text" class="form-control" placeholder="New name">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" id="newRestAdd" type="button">Add</button>
+                  </span>
+                </div>
 
-            <div class="restChoice"> -----------------------</div>
+                <div class="restChoice"> -----------------------</div>
 
-            <% for(var i=0; i< restaurant_list.length; i++){  %>
+                <% for(var i=0; i< restaurant_list.length; i++){  %>
 
-            <div class="restChoice" id=<%= restaurant_list[i].id %> > 
-                <%= restaurant_list[i].name %> 
-            </div>
+                <div class="restChoice" id=<%= restaurant_list[i].id %> > 
+                    <%= restaurant_list[i].name %> 
+                </div>
 
-            <% } %>
-
+                <% } %>
         </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/javascripts/jquery-2.1.4.min.js" type="text/javascript"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="/javascripts/restaurant_list.js"></script>
 </body>
 </html>

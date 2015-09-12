@@ -122,7 +122,7 @@
 		console.log("SENDING DATA : " + data);
 		$.ajax({
 			type: 'POST',
-			url: '/login',
+			url: '/login/login',
 			data: data,
 			dataType: "json",
 			success: function(data) {
@@ -131,8 +131,9 @@
 				if(data.success){
 					console.log("logging in");
 					localStorage.setItem("customer-id", data.customer_id);
-					localStorage.setItem("restaurant-id", data.restaurant_id);
-					window.location.href = "cpanel";
+					localStorage.setItem("restaurant_list", data.restaurant_list);
+					// window.location.href = "cpanel";
+					window.location.href = "restaurant_list";
 				}else{
 					console.log("wrong");
 					passwordObj.parent().append('<p class="input-error password-message">Username or password is not correct</p>');

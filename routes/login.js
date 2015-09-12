@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res){
+	console.log("NEW");
 	console.log(req.body.username);
 	console.log(req.body.password);    
 	console.log("HAHA");
@@ -43,12 +44,11 @@ router.post('/login', function(req, res){
 				}
 			}
 			if(success){
-				var string = encodeURIComponent(restaurant_list);
+				var restaurants = encodeURIComponent(JSON.stringify(restaurant_list));
 				console.log("REDIRECTING :");
-				console.log(string);
-				
-				res.redirect('/restaurant_list?restaurants=' + string);
-				// res.send({ success: true , customer_id: customer_id, restaurant_id: restaurant_id} );
+
+				// res.redirect('/restaurant_list?restaurants=' + string);
+				res.send({ success: true , customer_id: customer_id, restaurant_list: JSON.stringify(restaurant_list)} );
 
 			}else{
 				res.send({ success: false , msg: "Wrong username or password"} );
@@ -61,10 +61,5 @@ router.post('/login', function(req, res){
 	});
 });  
 
-
-router.post('/', function(req, res){
-	console.log(req);
-	console.log(res);
-});  
 
 module.exports = router;

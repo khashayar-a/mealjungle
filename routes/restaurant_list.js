@@ -3,6 +3,7 @@ var router = express.Router();
 var nano = require('nano')('http://admin:nobodyishere@localhost:5984');
 var database = nano.db.use('test');
 
+var restaurant_list = [];
 database.update = function(obj, key, callback) {
 	var db = this;
 	db.get(key, function (error, existing) { 
@@ -14,24 +15,15 @@ database.update = function(obj, key, callback) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log(req.query);
-	res.render('restaurant_list', { title: 'Express' , 
-		restaurant_list: [
-			{name: "bruns", id: "1o1"}, 
-			{name: "nordstan", id: "2o2"}
-		] 
-	});
+	console.log("COMING HERE");
+	res.render('restaurant_list', {restaurant_list: restaurant_list});
 });
-
-router.post('/login', function(req, res){
-});  
 
 
 router.post('/', function(req, res){
-	console.log(req);
-	console.log(res);
+	restaurant_list = JSON.parse(req.body.restaurant_list);
+	console.log(restaurant_list);
+	res.render('restaurant_list', {	status  : 200, success : 'Updated Successfully', restaurant_list: restaurant_list});
 });  
 
 module.exports = router;
-
-
