@@ -34,12 +34,4 @@ router.post('/', function(req, res){
 
 module.exports = router;
 
-$( "#newRestButton" ).click(function() {
-	$(".newRestInput").css("display", "table");
-});
 
-$( "#newRestAdd" ).click(function() {
-	$(".newRestInput").css("display", "none");
-	console.log($(".newRestInput>input").val());
-	$(".newRestInput>input").val("");
-});
