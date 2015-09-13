@@ -26,7 +26,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,
@@ -4959,8 +4958,8 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -5023,9 +5022,15 @@ a.thumbnail.active {
   color: #66512c;
 }
 .alert-danger {
+  display: none;
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+  width: 800px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
 }
 .alert-danger hr {
   border-top-color: #e4b9c0;
@@ -6796,9 +6801,10 @@ button.close {
 }
 
 .forpreview{
+   min-height: 150px;
    position: relative;
     width: 710px;
-	background-color: #F5F5F0;
+    background-color: #F5F5F0;
    -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
    -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
    box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
@@ -7164,8 +7170,11 @@ button.close {
 .mainbox{
   width: 800px;
   margin: auto auto;
-  margin-top: 100px;
   margin-bottom: 100px;
+}
+
+.mainbox > p {
+  margin-top: -50px;
 }
 
 .mainbox-cpanel{
@@ -7264,7 +7273,6 @@ button.close {
   margin-right: 60px;
 }
 
-
 .restChoice{
   width: 500px;
   height: 50px;
@@ -7293,4 +7301,9 @@ button.close {
   width: 500px;
   margin: auto auto;
   margin-bottom: 20px;
+}
+
+.bigLogo{
+  width: 500px;
+  margin: auto;
 }

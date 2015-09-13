@@ -9,11 +9,24 @@
 		$(".menuItem-menu").hide();
 		$(".category-menu").show();
 	});
-	
+
 	$("#btn-view-menu").click(function() {
-		$(".menuItem-menu").hide();
-		$(".preview-menu").show();
+		console.log(RestaurantJSON);
+		if(RestaurantJSON.menu.length == 0){
+			console.log("Nothing to show, first add some items");
+		} else {
+			var isEmpty = false;
+			$(RestaurantJSON.menu).each(function(){
+				console.log($(this)[0]);
+				if($(this)[0].items.length > 0){
+					$(".menuItem-menu").hide();
+					$(".preview-menu").show();
+					return false;
+				}
+			});
+		}
 	});
+
 	$(".preview-close").click(function() {
 		$(".preview-menu").hide();
 		$(".menuItem-menu").show();
@@ -174,7 +187,7 @@
 		for (var i=0; i< RestaurantJSON.menu.length; i++) {
 			menuCategories.push(RestaurantJSON.menu[i].name);
 			$('#category-holder').append('<div class="menucat-inline">' +
-											'<div class="category-cat">' +
+											'<div class="category">' +
 												'<div class="category-index">' + (RestaurantJSON.menu[i].idx+1) + '</div>' +
 												'<p class="category-name">' + toTitleCase(RestaurantJSON.menu[i].name) + '</p>' +
 											'</div>' +
