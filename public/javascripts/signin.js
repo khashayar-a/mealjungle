@@ -29,7 +29,7 @@ $("html").keyup(function(event){
 
 $( "#btn-login" ).click(function() {
 	if(validateUsermail(usermailObj.val()) == true && validatePassword(passwordObj.val()) == true){
-		login(usermailObj, passwordObj);
+		login(usermailObj.val(), passwordObj.val());
 	} else {
 		console.log("something is incorrect (usermail/password)");
 	}
@@ -54,11 +54,12 @@ function validatePassword(password) {
 /**
 	Validators  
 	**/
-	function login(username, password) {
+function login(username, password) {
 	var data = {};
 	data.username = username;
 	data.password = password;
-	console.log("SENDING DATA : " + data);
+	console.log("SENDING DATA : ");
+	console.log(data);
 	$.ajax({
 		type: 'POST',
 		url: '/login/login',
@@ -86,4 +87,4 @@ function validatePassword(password) {
 			console.log('process error' + err);
 		}
 	});
-	}
+}
