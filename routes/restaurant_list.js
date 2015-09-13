@@ -43,12 +43,13 @@ router.post('/get_all', function(req, res){
 					console.log(restaurant_list);
 				}
 			}
+			console.log("result : ");
+			console.log(restaurant_list);
+			res.type('json');	
+			res.send({status  : 200, success : true, restaurant_list: restaurant_list});
 		}
 	});
 
-	console.log(restaurant_list);
-	res.type('json');	
-	res.send({status  : 200, success : true, restaurant_list: restaurant_list});
 });  
 
 router.post('/new', function(req, res){
