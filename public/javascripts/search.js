@@ -65,3 +65,10 @@ function initialize() {
 	mapCanvas.appendChild(iDiv);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function crap(){
+	restaurant = {name: "PLACE!", address: "MY HOME" };
+	console.log(restaurant);
+	var renderedData = new EJS({url:'/templates/thumbnail.ejs'}).render({data:restaurant});
+	$('#result-section').append(renderedData);	
+}

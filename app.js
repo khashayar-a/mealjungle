@@ -11,6 +11,7 @@ var cpanel = require('./routes/cpanel');
 var restaurant_list = require('./routes/restaurant_list');
 var users = require('./routes/users');
 var search = require('./routes/search');
+var restaurant = require('./routes/restaurant');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/cpanel', cpanel);
 app.use('/restaurant_list', restaurant_list);
 app.use('/users', users);
 app.use('/search', search);
+app.use('/restaurant', restaurant);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
