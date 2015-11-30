@@ -7,32 +7,58 @@ $('#inputtext').autoGrowInput({ minWidth: 100, maxWidth: 600, comfortZone: 40 })
 /*
 	A listener for search field
 */
-$(function(){    
-    $("#inputtext").keypress(function(e){
-        if(e.which==32){ 
-		    var valueofinput= $(this).val();
-			if(valueofinput.length <= 25){
-			valueofinput = valueofinput.replace(/\s+/g, '');
-				if(valueofinput != ""){
-					var t = '<div class="tag">'+
-							'<div class="tag-name"><p>'+ valueofinput +'</p></div><!--'+
-							'-----------><div class="tag-close">&#x2716;</div>'+
-							'</div>';
-					$('#inputtext').before(t);
-					$('#inputtext').val('');	
-				} else {
-					return false;
+var tags;
+$("#inputtext").keypress(function(e){
+	if(e.which==13){
+		var valueofinput= $(this).val();
+		if(valueofinput.length >= 0){
+			var result = valueofinput.split(" ");
+			var index;
+			for(index=0; index < result.length; index++){
+				if(result[index] == ""){
+					result.splice(index, 1);
+					index--;
 				}
-			} else {
-				$(this).val("");
+			}
+			if(result.length > 0){
+				$('#inputtext').hide();
+				for(index=0; index < result.length; index++){
+					var t = '<div class="tag">'+
+						'<div class="tag-name"><p>'+ result[index] +'</p></div><!--'+
+						'-----------><div class="tag-close">&#x2716;</div>'+
+						'</div>';
+					$('.search-input').append(t);
+				}
+				tags = valueofinput;
 			}
 		}
-    });
-    $(document).on('click', '.tag-close', function(){
-        $(this).parent().remove();
-    });
-    $('.search-input').click(function() { $('#inputtext').focus(); });
+	}
 });
+
+$('.search-input').on('click', '.tag-close', function(event){
+	event.stopPropagation();
+	$(this).parent().children('.tag-name');
+	console.log(tags);
+	console.log($(this).parent().children('.tag-name').text());
+	tags = tags.replace($(this).parent().children('.tag-name').text()+" ", "");
+	console.log(tags);
+	$('#inputtext').val(tags);
+	$(this).parent().remove();
+});
+
+$('.search-input').click(function(event) {
+	if($(this).children('div').length > 0){
+		$('.search-input .tag').remove();
+	}
+	$('#inputtext').show();
+	$('#inputtext').focus();
+});
+
+
+function gen_color() {
+	var colors = ['#c62828', '#6a1b9a', '#1976d2', '#009688', '#006064', '#388e3e', '#757578'];
+	return colors[parseInt(Math.random() * (colors.length - 1) + 1)];
+}
 
 
 
