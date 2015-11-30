@@ -97,5 +97,5 @@ function crap(){
 	restaurant = {name: "PLACE!", address: "MY HOME" };
 	console.log(restaurant);
 	var renderedData = new EJS({url:'/templates/thumbnail.ejs'}).render({data:restaurant});
-	$('#result-section').before(renderedData);
+	$('#result-section').append(renderedData);
 }
