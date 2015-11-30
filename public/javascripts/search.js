@@ -30,6 +30,7 @@ $("#inputtext").keypress(function(e){
 					$('.search-input').append(t);
 				}
 				tags = valueofinput;
+				crap();
 			}
 		}
 	}
@@ -96,5 +97,5 @@ function crap(){
 	restaurant = {name: "PLACE!", address: "MY HOME" };
 	console.log(restaurant);
 	var renderedData = new EJS({url:'/templates/thumbnail.ejs'}).render({data:restaurant});
-	$('#result-section').append(renderedData);	
+	$('#result-section').before(renderedData);
 }
