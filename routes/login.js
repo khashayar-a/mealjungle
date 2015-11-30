@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var nano = require('nano')('http://admin:nobodyishere@localhost:5984');
-var database = nano.db.use('test');
+var database = nano.db.use('users');
 
 database.update = function(obj, key, callback) {
 	var db = this;
@@ -18,46 +18,37 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res){
-	console.log("NEW");
 	console.log(req.body.username);
 	console.log(req.body.password);    
-	console.log("HAHA");
 
 	res.type('json');	
 	
 	username = req.body.username;
 	password = req.body.password;
 
-	var success = false;
 	var customer_id = 0;
 	var restaurant_id = 0;
 
-	database.view('users', 'all', function(err, body) {
-		if (!err) {
-			for(var i = 0; i< body.rows[0].key.length; i++){
-				var user = body.rows[0].key[i];
-				if(username === user.username && password === user.password){
-					success = true;
-					customer_id = user.customer_id;
-					restaurant_id = user.restaurant_id;
-					restaurant_list = user.restaurant_list;
-				}
-			}
-			if(success){
-				var restaurants = encodeURIComponent(JSON.stringify(restaurant_list));
-				console.log("REDIRECTING :");
-
-				// res.redirect('/restaurant_list?restaurants=' + string);
+	restaurant_id = req.body.restaurant_id;
+	database.get(username, function(err, body){
+		if(!err){
+			console.log("BODY : ");
+			console.log(body);
+			if (body.password == password){
+				customer_id = body.customer_id;
+				restaurant_id = body.restaurant_id;
+				restaurant_list = body.restaurant_list;
 				res.send({ success: true , customer_id: customer_id, restaurant_list: JSON.stringify(restaurant_list)} );
-
-			}else{
+			} else {
+				console.log("ERROR : Wrong password");
 				res.send({ success: false , msg: "Wrong username or password"} );
 			}
-		}
-		else{
+		} else {
+			console.log("ERROR : ");
 			console.log(err);
-			res.send({ success: false, msg: err} );
+			res.send({ success: false , msg: "Wrong username or password"} );
 		}
+
 	});
 });  
 

@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', login);
 app.use('/login', login);
 app.use('/cpanel', cpanel);
 app.use('/restaurant_list', restaurant_list);

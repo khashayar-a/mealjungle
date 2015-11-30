@@ -30,7 +30,8 @@ $("#inputtext").keypress(function(e){
 					$('.search-input').append(t);
 				}
 				tags = valueofinput;
-				crap();
+				console.log(tags);
+				search(tags);
 			}
 		}
 	}
@@ -93,9 +94,47 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function crap(){
-	restaurant = {name: "PLACE!", address: "MY HOME" };
-	console.log(restaurant);
-	var renderedData = new EJS({url:'/templates/thumbnail.ejs'}).render({data:restaurant});
-	$('#result-section').append(renderedData);
+
+function show_results(restaurants){
+	//var restaurant = {};
+	$('#result-section').empty();
+	for(i=0; i < restaurants.length; i++){
+		//restaurant.name = restaurants[i].fields.name;
+		//restaurant.address = restaurants[i].fields.address;
+		restaurant = {name: restaurants[i].fields.name, address: restaurants[i].fields.address };
+		//restaurant = {name: "PLACE!", address: "MY HOME" };
+		console.log(restaurant);
+		var renderedData = new EJS({url:'/templates/restaurant_thumbnail.ejs'}).render({data:restaurant});
+		$('#result-section').append(renderedData);
+	}
+}
+
+function search(tags) {
+	var data = {};
+	data.tags = tags;
+	console.log("SENDING DATA : ");
+	console.log(data);
+	$.ajax({
+		type: 'POST',
+		url: '/search/search',
+		data: data,
+		dataType: "json",
+		success: function (data) {
+			console.log('success');
+			console.log(data);
+			if (data.success) {
+				console.log("YES");
+				show_results(data.results);
+			} else {
+				console.log("wrong");
+			}
+		},
+		complete: function () {
+			//called when complete
+			console.log('process complete');
+		},
+		error: function (err) {
+			console.log('process error' + err);
+		}
+	});
 }

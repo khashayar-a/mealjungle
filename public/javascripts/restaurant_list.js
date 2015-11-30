@@ -6,6 +6,8 @@ $(window).load(function() {
 function get_list(){
 	data = {}
 	data.customer_id = localStorage.getItem("customer-id");
+	data.username = localStorage.getItem("username");
+	data.password = localStorage.getItem("password");
 	console.log(JSON.stringify(data));
 	console.log(data);
 	setTimeout(function() {
@@ -35,15 +37,15 @@ function get_list(){
 }
 
 function construct_list(restaurant_list){
-	$('#placeholder').empty();
+	$('#placeholder').empty();			
 	for (var i = 0;  i< restaurant_list.length; i++) {
-		$('#placeholder').append('' + 
-			'<div class="restChoice" id="' + restaurant_list[i].id + '">' +
-		    restaurant_list[i].name +
-		    '</div>'
-	    );
-	};
+		restaurant = {id: restaurant_list[i].id, name : restaurant_list[i].name };
+		console.log(restaurant);
+		var renderedData = new EJS({url:'/templates/restaurant_list.ejs'}).render({data:restaurant});
+		$('#placeholder').append(renderedData);
+	}
 }
+
 
 $( "#newRestButton" ).click(function() {
 	$(".newRestInput").css("display", "table");
@@ -55,6 +57,8 @@ $( "#newRestAdd" ).click(function() {
 	data = {};
 	data.name = $(".newRestInput>input").val();
 	data.customer_id = localStorage.getItem("customer-id");
+	data.username = localStorage.getItem("username");
+	data.password = localStorage.getItem("password");
 	console.log(JSON.stringify(data));
 	$.ajax({
 		type: 'POST',

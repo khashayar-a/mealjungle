@@ -70,8 +70,18 @@ function login(username, password) {
 			console.log(data);
 			if (data.success) {
 				console.log("logging in");
+				localStorage.setItem("username", username);
+				localStorage.setItem("password", password);
 				localStorage.setItem("customer-id", data.customer_id);
 				localStorage.setItem("restaurant_list", data.restaurant_list);
+
+				console.log("SAVED : ");
+				d = {}
+				d.customer_id = localStorage.getItem("customer-id");
+				d.username = localStorage.getItem("username");
+				d.password = localStorage.getItem("password");
+				
+				console.log(d);
 				// window.location.href = "cpanel";
 				window.location.href = "restaurant_list";
 			} else {

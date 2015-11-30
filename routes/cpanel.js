@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var nano = require('nano')('http://admin:nobodyishere@localhost:5984');
-var database = nano.db.use('test');
+var database = nano.db.use('restaurants');
 
 database.update = function(obj, key, callback) {
 	var db = this;

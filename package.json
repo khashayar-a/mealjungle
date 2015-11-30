@@ -15,6 +15,7 @@
 	"serve-favicon": "~2.3.0",
 	"nano": "latest",
 	"node-uuid": "latest",
-	"slug": "latest"
+	"slug": "latest",
+	"request" : "latest"
     }
 }
