@@ -1,12 +1,12 @@
 htmml{
-	width:100%;
-	height:100%;
+    width:100%;
+    height:100%;
 }
 body{
-	width:100%;
-	height:100%;
-	margin:0;
-	min-width: 800px;
+    width:100%;
+    height:100%;
+    margin:0;
+    min-width: 800px;
 }
 
 .top-panel{
@@ -17,35 +17,35 @@ body{
 .top2-panel{
     height: 20px;
     background-color: whitw;
-   /* margin-top: 30px; */
+    /* margin-top: 30px; */
 }
 
 .mainbox{
     width: 100%;
-	min-width:800px;
+    min-width:800px;
     background-color: green;
     position: absolute;
     top: 150px;
-	bottom: 3px;
+    bottom: 3px;
 }
 
 .left-box{
     width: 55%;
-	min-width:440px;
-	height: 100%;
+    min-width:440px;
+    height: 100%;
     display: inline-block;
-	overflow-y: scroll;
+    overflow-y: scroll;
     background-color: #E0E0D1;
-	float:left;
+    float:left;
 }
 
 .right-box{
     display: inline-block;
     height: 100%;
     width: 45%;
-	min-width:360px;
+    min-width:360px;
     background-color: yellow;
-	float:right;
+    float:right;
 }
 
 .item-box{
@@ -59,18 +59,18 @@ body{
 }
 
 .item-box-header:hover {
-	-webkit-filter: brightness(100%);
+    -webkit-filter: brightness(100%);
 }
 
 .item-box-header{
     width: 100%;
-    height: 100%;	
-	-webkit-filter: brightness(85%);
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	-ms-transition: all 0.5s ease;
-	transition: all 0.5s ease;
+    height: 100%;
+    -webkit-filter: brightness(85%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .item-box-footer{
@@ -134,7 +134,7 @@ body{
 .item-box-photo{
     width: 100%;
     height: 70%;
-    background: url(../images/1.jpg) 50% 50% no-repeat;
+    background: url(img/1.jpg) 50% 50% no-repeat;
     border-radius: 15px 15px 0px 0px;
 }
 
@@ -150,7 +150,7 @@ body{
 }
 
 .item-box-name:hover{
-	    cursor: hand;cursor: pointer;
+    cursor: hand;cursor: pointer;
 
 }
 
@@ -168,15 +168,15 @@ body{
 
 
 .top-panel-margined{
-	height: 100%;
+    height: 100%;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 .logo-box{
-	height: 100px;
+    height: 100px;
     width: 175px;
-	float:left;
+    float:left;
 }
 
 img{
@@ -196,7 +196,7 @@ img{
 }
 
 .top-panel-nav-input{
-	min-width: 405px;
+    min-width: 405px;
     height: 50px;
     overflow: hidden;
     /* overflow-x: scroll; */
@@ -205,11 +205,14 @@ img{
 }
 
 .search-input>input{
+    width:100%;
     background-color: black;
     color: white;
     text-indent: 10px;
     border: 0;
-	font-size: 16px;
+    font-size: 16px;
+    padding-left:8px;
+    padding-right:8px;
 }
 
 .search-input-shadow{
@@ -218,11 +221,11 @@ img{
     height: 30px;
     z-index: 10;
     border-radius: 20px;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;1+0,0+4,0+95,1+100 */
-	background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 4%, rgba(0,0,0,0) 95%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0) 95%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0) 95%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;1+0,0+4,0+95,1+100 */
+    background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 4%, rgba(0,0,0,0) 95%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0) 95%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0) 95%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
     pointer-events: none;
     top: 10px;
 }
@@ -282,14 +285,14 @@ button:focus {
 } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
 
 .tag{
-	height:28px;
-	display: inline-block;
-	margin-right: 2px;
+    height:28px;
+    display: inline-block;
+    margin-right: 2px;
     color: white;
     text-align: center;
-	vertical-align: middle;
-	margin-top: 3px;
-	padding-left: 3px;
+    vertical-align: middle;
+    margin-top: 3px;
+    padding-left: 3px;
 }
 
 .tag-name
@@ -308,7 +311,7 @@ button:focus {
     padding-right: 8px;
     font-size: 16px;
     height: 18px;
-	line-height: 18px;
+    line-height: 18px;
 }
 
 .tag-close{
@@ -325,23 +328,23 @@ button:focus {
     font-size: 14px;
     padding-left: 0px;
     cursor: hand;cursor: pointer;
-	line-height: 22px;
+    line-height: 22px;
 }
 .tag-close:before{
-	font-size: 128px;
+    font-size: 128px;
     vertical-align: middle;
 }
 
 .footer-box-empty{
-	width:55%;
-	height:150px;
+    width:55%;
+    height:150px;
 }
 
 .footer-box-left{
-	bottom:0;
+    bottom:0;
     width: 100%;
     height:150px;
-	background-color:white;
+    background-color:white;
 }
 
 .footer-box-left-main{
@@ -355,7 +358,7 @@ button:focus {
     width: 30%;
     display: inline-block;
     vertical-align: top;
-	float:left;
+    float:left;
 }
 
 .footer-box-left-info-logo{
@@ -369,16 +372,16 @@ button:focus {
 }
 
 .footer-box-left-info-menu > ul{
-	margin-left: 14px;
+    margin-left: 14px;
     font-weight: 600;
-	list-style: initial;
+    list-style: initial;
 }
 
 .footer-box-left-subscribe{
     height: 100%;
     width:68%;
     display: inline-block;
-	float:right;
+    float:right;
 }
 
 .separator
@@ -389,7 +392,7 @@ button:focus {
     background-image: radial-gradient(#000, #CCB), radial-gradient(#000, #CCC);
     background-position: 0, 100%, 0, 100%;
     display: inline-block;
-	float:left;
+    float:left;
 }
 
 .footer-box-right{
@@ -399,7 +402,7 @@ button:focus {
     height: 150px;
     background-color: white;
     z-index: 99;
-	display:none;
+    display:none;
 }
 
 .restaurant-box{
@@ -408,7 +411,7 @@ button:focus {
     background-color: black;
     position: absolute;
     top: 0;
-	display: none;
+    display: none;
 }
 
 
