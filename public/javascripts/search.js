@@ -77,36 +77,23 @@ $(function($) {
 	})
 });
 
- /* 
-	Initialize map
- */
-function initialize() {
-	var mapCanvas = document.getElementById("map");
-	var mapOptions = {
-		center: new google.maps.LatLng(44.5403, -78.5463),
-		zoom: 8,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	}
-	var map = new google.maps.Map(mapCanvas, mapOptions);
-	var iDiv = document.createElement('div');
-	iDiv.className = 'footer-box-right';
-	mapCanvas.appendChild(iDiv);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
 
 
 function show_results(restaurants){
 	//var restaurant = {};
+	deleteMarkers();
 	$('#result-section').empty();
 	for(i=0; i < restaurants.length; i++){
-		//restaurant.name = restaurants[i].fields.name;
-		//restaurant.address = restaurants[i].fields.address;
 		restaurant = {name: restaurants[i].fields.name, address: restaurants[i].fields.address };
-		//restaurant = {name: "PLACE!", address: "MY HOME" };
 		console.log(restaurant);
 		var renderedData = new EJS({url:'/templates/restaurant_thumbnail.ejs'}).render({data:restaurant});
 		$('#result-section').append(renderedData);
+		
+		// Map Marker		
+		var location = new google.maps.LatLng(restaurants[i].fields.latitude, restaurants[i].fields.longitude);
+		addMarker(location);
 	}
+	showMarkers();
 }
 
 function search(tags) {
