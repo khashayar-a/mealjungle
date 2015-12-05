@@ -41,7 +41,7 @@ function construct_list(restaurant_list){
 	for (var i = 0;  i< restaurant_list.length; i++) {
 		restaurant = {id: restaurant_list[i].id, name : restaurant_list[i].name };
 		console.log(restaurant);
-		var renderedData = new EJS({url:'/templates/restaurant_list.ejs'}).render({data:restaurant});
+		var renderedData = new EJS({url:'/templates/restaurant_list_thumbnail.ejs'}).render({data:restaurant});
 		$('#placeholder').append(renderedData);
 	}
 }
