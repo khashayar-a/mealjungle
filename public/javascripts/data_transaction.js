@@ -14,7 +14,7 @@ $("#btn-save").click(function() {
 	RestaurantJSON.name = resName;
 	RestaurantJSON.description = resDescription;
 	RestaurantJSON.amenity = resType;
-	RestaurantJSON.address = resAddress;
+	RestaurantJSON.address = address;
 	RestaurantJSON.longitude = longitude;
 	RestaurantJSON.latitude = latitude;
 	RestaurantJSON.phone = resPhone;
@@ -84,7 +84,7 @@ function set_all_values(restaurant_json){
 
 	$("#resName").val(restaurant_json.name);
 	$("#resDescription").val(restaurant_json.description);
-	$("#resAddress").val(restaurant_json.address);
+	$("#resAddress").val(restaurant_json.address.formatted_address);
 	$("#resPhone").val(restaurant_json.phone);
 	$("#resEmail").val(restaurant_json.email);
 	$("#resWebsite").val(restaurant_json.website);

@@ -85,6 +85,7 @@ function show_results(restaurants){
 	$('#result-section').empty();
 	for(i=0; i < restaurants.length; i++){
 		restaurant = {name: restaurants[i].fields.name, address: restaurants[i].fields.address };
+		console.log(restaurants[i]);
 		console.log(restaurant);
 		var renderedData = new EJS({url:'/templates/restaurant_thumbnail.ejs'}).render({data:restaurant});
 		$('#result-section').append(renderedData);
