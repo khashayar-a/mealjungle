@@ -411,16 +411,6 @@ button:focus {
     display:none;
 }
 
-.restaurant-box{
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    display: none;
-}
-
-
 .z-depth-0 {
     box-shadow: none !important; }
 
