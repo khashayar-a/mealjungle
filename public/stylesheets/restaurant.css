@@ -1,0 +1,113 @@
+
+.restaurant-box{
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+}
+
+.restaurant-box:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.restaurant-box > div {
+    width: 90%;
+    position: absolute;
+    top: 100px;
+    bottom: 1px;
+    margin-left: 5%;
+    background: #fafafa;
+}
+
+.close {
+    width: 40px;
+    line-height: 40px;
+    background: #fafafa;
+    color: #212121;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    top: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 20px;
+    -moz-box-shadow: 1px 1px 3px #212121;
+    -webkit-box-shadow: 1px 1px 3px #212121;
+    box-shadow: 1px 1px 3px #212121;
+}
+
+.close:hover { background: #00d9ff; }
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+
+/*----- Tab Links -----*/
+/* Clearfix */
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.tab-links li {
+    text-align: center;
+    width: 33%;
+    height: 80px;
+    float: left;
+    list-style: none;
+}
+
+.tab-links div {
+    width: 100%;
+    height: 80px;
+    display: inline-block;
+    border-radius: 3px 3px 0px 0px;
+    background: #e0e0e0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    transition: all linear 0.15s;
+}
+
+.tab-links div:hover {
+    background:#fff59d;
+    text-decoration:none;
+}
+
+li.active div, li.active div:hover {
+    background: #fff176;
+    color: #000;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    padding:15px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:#fff;
+}
+
+.tab {
+    display:none;
+}
+
+.tab.active {
+    display:block;
+}

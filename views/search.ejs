@@ -4,6 +4,8 @@
    <meta charset="utf-8"/>
    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
    <link rel="stylesheet" type="text/css" href="stylesheets/search.css">
+   <link rel="stylesheet" type="text/css" href="stylesheets/restaurant.css">
+
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -60,10 +62,41 @@
 --------><div class="right-box" id="map">
    </div>
 </div>
-<div class="restaurant-box"></div>
+<a href="#openModal">Open Modal</a>
+
+<div id="openModal" class="restaurant-box">
+   <a href="#close" title="Close" class="close">✖</a>
+   <div>
+      <div class="tabs">
+         <ul class="tab-links">
+            <li class="active"><div link="#menu-tab">Today's menu</div></li>
+            <li><div link="#restaurant-tab">The restaurant</div></li>
+            <li><div link="#deals-tab">Current deals</div></li>
+         </ul>
+
+         <div class="tab-content">
+            <div id="menu-tab" class="tab active">
+               <p>Tab #1 content goes here!</p>
+               <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis.</p>
+            </div>
+
+            <div id="restaurant-tab" class="tab">
+               <p>Tab #2 content goes here!</p>
+               <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum risus ornare mollis. In hac habitasse platea dictumst. Ut euismod tempus hendrerit. Morbi ut adipiscing nisi. Etiam rutrum sodales gravida! Aliquam tellus orci, iaculis vel.</p>
+            </div>
+
+            <div id="deals-tab" class="tab">
+               <p>Tab #3 content goes here!</p>
+               <p>Donec pulvinar neque sed semper lacinia. Curabitur lacinia ullamcorper nibh; quis imperdiet velit eleifend ac. Donec blandit mauris eget aliquet lacinia! Donec pulvinar massa interdum ri.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 </body>
 <script src="javascripts/jquery.auto-grow-input.min.js"></script>
 <script src="javascripts/search_map.js"></script>
 <script src="javascripts/search.js"></script>
+<script src="javascripts/restaurant.js"></script>
 
 </html>
