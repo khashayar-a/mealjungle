@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var Q = require('q');
 
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
