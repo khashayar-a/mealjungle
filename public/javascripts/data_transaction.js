@@ -15,8 +15,6 @@ $("#btn-save").click(function() {
 	RestaurantJSON.description = resDescription;
 	RestaurantJSON.amenity = resType;
 	RestaurantJSON.address = address;
-	RestaurantJSON.longitude = longitude;
-	RestaurantJSON.latitude = latitude;
 	RestaurantJSON.phone = resPhone;
 	RestaurantJSON.email = resEmail;
 	RestaurantJSON.website = resWebsite;

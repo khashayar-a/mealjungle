@@ -16,6 +16,7 @@
 	"nano": "latest",
 	"node-uuid": "latest",
 	"slug": "latest",
-	"request" : "latest"
+	"request" : "latest",
+	"elasticsearch" : "latest",
     }
 }

@@ -7,6 +7,8 @@
 	var position_marker;
 	var position_lat;
 	var position_lon;
+	var map_thumbnail = new EJS({url:'/templates/map_thumbnail.ejs'});
+	var current_info_marker;
 
 	function initialize() {
 		if (navigator.geolocation) {
@@ -70,13 +72,29 @@
 
 
 // Adds a marker to the map and push to the array.
-function addMarker(location) {
+function addMarker(location, restaurant) {
 	var marker = new google.maps.Marker({
 		position: location,
 		map: map
 	});
+	addInfoWindow(marker, restaurant);
 	markers.push(marker);
 }
+
+function addInfoWindow(marker, restaurant) {
+	var content = map_thumbnail.render({data:restaurant});
+	var infowindow = new google.maps.InfoWindow({
+		content: content,
+		maxWidth: 200
+	});
+	marker.addListener('click', function () {
+		if(current_info_marker)
+			current_info_marker.close();
+		infowindow.open(map, marker);
+		current_info_marker = infowindow;
+	});
+}
+
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {

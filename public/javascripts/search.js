@@ -8,6 +8,10 @@ $('#inputtext').autoGrowInput({ minWidth: 100, maxWidth: 600, comfortZone: 40 })
 	A listener for search field
 */
 var tags;
+
+var restaurant_thumbnail = new EJS({url:'/templates/restaurant_thumbnail.ejs'});
+
+
 $("#inputtext").keypress(function(e){
 	if(e.which==13){
 		var valueofinput= $(this).val();
@@ -84,15 +88,15 @@ function show_results(restaurants){
 	deleteMarkers();
 	$('#result-section').empty();
 	for(i=0; i < restaurants.length; i++){
-		restaurant = {name: restaurants[i].fields.name, address: restaurants[i].fields.address };
+		restaurant = {name: restaurants[i]._source.name, address: restaurants[i]._source.address.name , distance: restaurants[i].fields.distance[0].toFixed(2) };
 		console.log(restaurants[i]);
 		console.log(restaurant);
-		var renderedData = new EJS({url:'/templates/restaurant_thumbnail.ejs'}).render({data:restaurant});
+		var renderedData = restaurant_thumbnail.render({data:restaurant});
 		$('#result-section').append(renderedData);
 		
 		// Map Marker		
-		var location = new google.maps.LatLng(restaurants[i].fields.latitude, restaurants[i].fields.longitude);
-		addMarker(location);
+		var location = new google.maps.LatLng(restaurants[i]._source.address.location.lat, restaurants[i]._source.address.location.lon);
+		addMarker(location, restaurant);
 	}
 	showMarkers();
 }
@@ -100,11 +104,15 @@ function show_results(restaurants){
 function search(tags) {
 	var data = {};
 	data.tags = tags;
+	if(position_lat && position_lon){
+		data.latitude = position_lat;
+		data.longitude = position_lon;
+	}
 	console.log("SENDING DATA : ");
 	console.log(data);
 	$.ajax({
 		type: 'POST',
-		url: '/search/search',
+		url: '/search/search_by_relevance',
 		data: data,
 		dataType: "json",
 		success: function (data) {
@@ -122,7 +130,7 @@ function search(tags) {
 			console.log('process complete');
 		},
 		error: function (err) {
-			console.log('process error' + err);
+			console.log(err)
 		}
 	});
 }

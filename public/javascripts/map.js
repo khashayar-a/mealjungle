@@ -109,13 +109,16 @@
 
 	function fetch() {
 		if (typeof places !== 'undefined' && places.length > 0) {
-			console.log(places[0].formatted_address);
 			document.getElementById('resAddress').value = places[0].formatted_address;
-			console.log(places[0].geometry.location);
-			latitude = places[0].geometry.location.lat();
-			longitude = places[0].geometry.location.lng();
+
 			address.name = places[0].name;
 			address.formatted_address = places[0].formatted_address;
+
+			latitude = places[0].geometry.location.lat();
+			longitude = places[0].geometry.location.lng();
+			address.location = {};
+			address.location.lat = latitude;
+			address.location.lon = longitude;
 
 			for (var i = 0; i < places[0].address_components.length; i++) {
 				var component = places[0].address_components[i];
