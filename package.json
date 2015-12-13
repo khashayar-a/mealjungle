@@ -17,6 +17,6 @@
 	"node-uuid": "latest",
 	"slug": "latest",
 	"request" : "latest",
-	"elasticsearch" : "latest",
+	"elasticsearch" : "latest"
     }
 }
