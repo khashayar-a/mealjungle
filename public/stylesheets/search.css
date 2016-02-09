@@ -1,6 +1,27 @@
-htmml{
+/**
+* Default colors
+* Jungle yellow: #FFF046
+* Warm Grey: #F0F0E6
+* (Darker) Warm Grey: #E1E1D7
+* (Lighter) Warm Grey: #F5F5EB
+* Black: #000000
+* White: #FFFFFF
+*/
+
+@font-face {
+    font-family: MealJungle;
+    src: url(fonts/basic/HurmeGeometricSans4.otf);
+}
+
+@font-face {
+    font-family: MealJungleBold;
+    src: url(fonts/basic/HurmeGeometricSans4SemiBold.otf);
+}
+
+html{
     width:100%;
     height:100%;
+    font-family: MealJungle,Arial, Helvetica, sans-serif;
 }
 body{
     width:100%;
@@ -11,22 +32,21 @@ body{
 
 .top-panel{
     height: 100px;
-    background-color: #fff176;
+    background-color: #FFF046;
 }
 
 .top2-panel{
     height: 20px;
-    background-color: whitw;
-    /* margin-top: 30px; */
+    background-color: #FFFFFF;
+    display: none;
 }
 
 .mainbox{
     width: 100%;
     min-width:800px;
-    background-color: green;
     position: absolute;
     top: 150px;
-    bottom: 3px;
+    bottom: 1px;
 }
 
 .left-box{
@@ -35,7 +55,7 @@ body{
     height: 100%;
     display: inline-block;
     overflow-y: scroll;
-    background-color: #eeeeee;
+    background-color: #F5F5EB;
     float:left;
 }
 
@@ -44,19 +64,23 @@ body{
     height: 100%;
     width: 45%;
     min-width:360px;
-    background-color: yellow;
+    background-color: #FFF046;
     float:right;
 }
 
 .item-box{
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 15px 15px;
     display: inline-block;
     width: 180px;
     height: 260px;
-    background-color: #fafafa;
+    background-color: #FFFFFF;
     margin: 10px;
     box-shadow: 1.5px 1.5px rgba(0,0,0,.1);
     transition: box-shadow 0.5s ease;
+}
+
+.item-box:hover{
+    cursor: hand;cursor: pointer;
 }
 
 .item-box-header:hover {
@@ -110,7 +134,7 @@ body{
     display: inline-block;
     height: 30px;
     width: 30px;
-    background-color: black;
+    background-color: #000000;
     margin-left: 10px;
     margin-top: 15px;
 }
@@ -139,8 +163,9 @@ body{
 .item-box-photo{
     width: 100%;
     height: 70%;
-    background: url(../images/1.jpg) 50% 50% no-repeat;
+    background: url(img/1.jpg) 50% 50% no-repeat;
     border-radius: 15px 15px 0px 0px;
+    box-shadow: 1.5px 1.5px rgba(0,0,0,.1);
 }
 
 .item-box-info{
@@ -152,11 +177,7 @@ body{
     width: 90%;
     height: 40%;
     margin: auto;
-}
-
-.item-box-name:hover{
-    cursor: hand;cursor: pointer;
-
+    font-family: MealJungleBold ,Arial, Helvetica, sans-serif;
 }
 
 .item-box-name>p{
@@ -174,13 +195,13 @@ body{
 
 .top-panel-margined{
     height: 100%;
-    margin-left: 20px;
+    margin-left: 25px;
     margin-right: 20px;
 }
 
 .logo-box{
-    height: 100px;
-    width: 175px;
+    height: 95px;
+    width: 130px;
     float:left;
 }
 
@@ -197,7 +218,8 @@ img{
 
 .top-panel-nav-line{
     height: 50px;
-    margin-top: 25px;
+    margin-top: 31px;
+    margin-left: 15px;
 }
 
 .top-panel-nav-input{
@@ -212,11 +234,11 @@ img{
 .search-input>input{
     width:100%;
     height:100%;
-    background-color: #212121;
-    color: #fafafa;
+    background-color: #000000;
+    color: #FFFFFF;
     text-indent: 10px;
     border: 0;
-    font-size: 16px;
+    font-size: 18px;
     padding-left:8px;
     padding-right:8px;
 }
@@ -248,20 +270,20 @@ img{
     height: 30px;
     margin-top: 10px;
     font-size: 20px;
-    background-color: #212121;
+    background-color: #000000;
     overflow: hidden;
     border-radius: 20px;
-}l
+}
 
- p{
-     margin: 0px;
-     -webkit-touch-callout: none;
-     -webkit-user-select: none;
-     -khtml-user-select: none;
-     -moz-user-select: none;
-     -ms-user-select: none;
-     user-select: none;
- }
+p{
+    margin: 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 input:focus,
 select:focus,
@@ -275,7 +297,7 @@ button:focus {
 } /* this targets the default scrollbar (compulsory) */
 
 ::-webkit-scrollbar-track {
-    background-color: #FFFF80;
+    background-color: #FFF046;
 } /* the new scrollbar will have a flat appearance with the set background color */
 
 ::-webkit-scrollbar-thumb {
@@ -283,7 +305,7 @@ button:focus {
 } /* this will style the thumb, ignoring the track */
 
 ::-webkit-scrollbar-button {
-    background-color: yellow;
+    background-color: #FFF046;
 } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
 
 ::-webkit-scrollbar-corner {
@@ -291,23 +313,23 @@ button:focus {
 } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
 
 .tag{
-    height:28px;
+    height: 26px;
     display: inline-block;
     margin-right: 2px;
-    color: white;
+    color: #FFFFFF;
     text-align: center;
     vertical-align: middle;
-    margin-top: 3px;
     padding-left: 3px;
+    margin-bottom: 3px;
 }
 
 .tag-name
 {
     display: inline-block;
+    position: relative;
     background: green;
-    color: white;
+    color: #FFFFFF;
     text-align: center;
-    padding: 3px;
     padding-left: 10px;
     border-radius: 1em;
     border-top-right-radius: 0;
@@ -315,26 +337,24 @@ button:focus {
     margin-right: 1px;
     float: left;
     padding-right: 8px;
-    font-size: 16px;
-    height: 18px;
-    line-height: 18px;
+    font-size: 18px;
+    height: 26px;
+    line-height: 26px;
 }
 
 .tag-close{
-    width: 22px;
-    height: 18px;
+    width: 28px;
+    height: 26px;
     display: inline-block;
     background: green;
-    color: white;
+    color: #FFFFFF;
     text-align: center;
-    padding: 3px;
     border-radius: 1em;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    font-size: 14px;
-    padding-left: 0px;
-    cursor: hand;cursor: pointer;
-    line-height: 22px;
+    cursor: hand;
+    cursor: pointer;
+    padding-right: 3px;
 }
 .tag-close:before{
     font-size: 128px;
@@ -350,7 +370,7 @@ button:focus {
     bottom:0;
     width: 100%;
     height:150px;
-    background-color:white;
+    background-color:#FFFFFF;
 }
 
 .footer-box-left-main{
@@ -406,7 +426,7 @@ button:focus {
     width: 100%;
     position: absolute;
     height: 150px;
-    background-color: white;
+    background-color: #FFFFFF;
     z-index: 99;
     display:none;
 }
@@ -431,16 +451,3 @@ button:focus {
 
 .z-depth-5 {
     box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22); }
-
-
-
-
-
-
-
-
-
-
-
-
-

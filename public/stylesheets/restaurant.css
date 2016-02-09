@@ -1,18 +1,36 @@
+/**
+* Default colors
+* Jungle yellow: #FFF046
+* Warm Grey: #F0F0E6
+* (Darker) Warm Grey: #E1E1D7
+* (Lighter) Warm Grey: #F5F5EB
+* Black: #000000
+* White: #FFFFFF
+*/
+
+@font-face {
+    font-family: MealJungle;
+    src: url(fonts/basic/HurmeGeometricSans4.otf);
+}
+
+@font-face {
+    font-family: MealJungleBold;
+    src: url(fonts/basic/HurmeGeometricSans4SemiBold.otf);
+}
 
 .restaurant-box{
+    display: none;
     position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: MealJungle,Arial, Helvetica, sans-serif;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background: rgba(0,0,0,0.8);
     z-index: 99999;
-    opacity:0;
     -webkit-transition: opacity 200ms ease-in;
     -moz-transition: opacity 200ms ease-in;
     transition: opacity 200ms ease-in;
-    pointer-events: none;
 }
 
 .restaurant-box:target {
@@ -20,26 +38,34 @@
     pointer-events: auto;
 }
 
-.restaurant-box > div {
+.restaurant-box-header{
+    position: absolute;
+    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40px;
+}
+.restaurant-box-main {
     width: 90%;
     position: absolute;
     top: 100px;
     bottom: 1px;
     margin-left: 5%;
-    background: #fafafa;
+    background: #FFFFFF;
+    overflow-y: scroll;
 }
 
-.close {
-    width: 40px;
-    line-height: 40px;
-    background: #fafafa;
-    color: #212121;
+.restaurant-close {
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    background: #FFFFFF;
+    color: #000000;
     position: absolute;
-    left: 0;
     right: 0;
-    margin: 0 auto;
     text-align: center;
-    top: 30px;
     text-decoration: none;
     font-weight: bold;
     -webkit-border-radius: 12px;
@@ -50,7 +76,10 @@
     box-shadow: 1px 1px 3px #212121;
 }
 
-.close:hover { background: #00d9ff; }
+.restaurant-close:hover {
+    background: #FFF046;
+    cursor: hand;cursor: pointer;
+}
 
 /*----- Tabs -----*/
 .tabs {
@@ -60,6 +89,9 @@
 
 /*----- Tab Links -----*/
 /* Clearfix */
+.tab-links {
+    position: relative;
+}
 .tab-links:after {
     display:block;
     clear:both;
@@ -68,40 +100,87 @@
 
 .tab-links li {
     text-align: center;
-    width: 33%;
-    height: 80px;
+    width:33.33%;
+    height: 85px;
     float: left;
     list-style: none;
+    box-sizing: border-box;
 }
 
-.tab-links div {
+.tab-links > li > div {
     width: 100%;
-    height: 80px;
+    height: 85px;
     display: inline-block;
-    border-radius: 3px 3px 0px 0px;
-    background: #e0e0e0;
+    background: #FFFFFF;
     font-size: 16px;
     font-weight: 600;
-    color: #000;
+    color: #000000;
     transition: all linear 0.15s;
+}
+
+.tab-links > li > .tabs-arrow{
+    display: none;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    bottom: -16px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.tab-links p{
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .tab-links div:hover {
     background:#fff59d;
     text-decoration:none;
+    cursor: hand;cursor: pointer;
+}
+
+.tabs-arrow:hover{
+    background-color: #FFFFFF;
+}
+
+.tabs-icon{
+    width: 40px;
+    height: 40px;
+    margin:auto;
+    margin-top: 10px;
+}
+
+li.active{
+    position: relative;
+    z-index: 3;
 }
 
 li.active div, li.active div:hover {
-    background: #fff176;
+    background: #FFF046;
     color: #000;
+}
+
+.tabs-arrow:hover{
+    background-color: #FFFFFF !important;
+}
+
+li.active .tabs-arrow{
+    display:block;
 }
 
 /*----- Content of Tabs -----*/
 .tab-content {
-    padding:15px;
-    border-radius:3px;
+    position: relative;
     box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
-    background:#fff;
+    background:#FFFFFF;
+    box-shadow: 0px -2px 4px rgba(225, 225, 215, 1);
+    -moz-box-shadow: 0px -2px 4px rgba(225, 225, 215, 1);
+    -webkit-box-shadow: 0px -2px 4px rgba(225, 225, 215, 1);
+    z-index: 1;
+    margin-top: 1px;
 }
 
 .tab {
@@ -110,4 +189,128 @@ li.active div, li.active div:hover {
 
 .tab.active {
     display:block;
+}
+
+.restaurant-logo{
+    width: 100px;
+    margin:auto;
+    margin-top: 20px;
+}
+
+.restaurant-description{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.center-tab{
+    border-left: 1px solid #F0F0E6;
+    border-right: 1px solid #F0F0E6;
+}
+
+.restaurant-calendar{
+    background-color: #F5F5EB;
+}
+
+.restaurant-tab-item h2{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.restaurant-tab-item{
+    padding:15px;
+}
+
+.restaurant-box-name{
+    color: #FFFFFF;
+    font-size: 28px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+
+
+
+
+
+/*----- Accordion -----*/
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+}
+
+/*----- Section Titles -----*/
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid #1a1a1a;
+    background:#FFFFFF;
+    transition:all linear 0.15s;
+    text-decoration:none;
+    padding-left: 20px;
+    /* Type */
+    font-size:1.200em;
+    font-weight: 600;
+    color:#000000;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+    /* Type */
+    text-decoration:none;
+}
+
+.accordion-section:last-child .accordion-section-title {
+    border-bottom:none;
+}
+
+/*----- Section Content -----*/
+.accordion-section-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    display:block;
+}
+
+.grey, .grey:hover{
+    background-color: #F5F5EB;
+}
+
+
+/*------Menu Items------*/
+
+.menu-tab-item{
+    width: 49.5%;
+    box-sizing: border-box;
+    display: inline-block;
+    padding:10px;
+}
+
+.menu-tab-item > * {
+    vertical-align:middle;  /* Align children to middle of line */
+}
+
+.menu-tab-item-name{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.menu-tab-item-price{
+    display: inline-block;
+    background-color: #FFF046;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
 }

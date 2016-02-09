@@ -1,10 +1,5 @@
 
 /*
-	Add an autogrow to input field
-*/
-$('#inputtext').autoGrowInput({ minWidth: 100, maxWidth: 600, comfortZone: 40 });
-
-/*
 	A listener for search field
 */
 var tags;
